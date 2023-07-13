@@ -591,14 +591,18 @@ header .badges .badge {
 .youtube {
   position: relative;
   height: 400px;
+  background-color: royalblue;
+  overflow: hidden;
 }
 
 .youtube .youtube__area {
   width: 1920px;
   background-color: orange;
   position: absolute;
+  top: 50%;
   left: 50%;
   margin-left: calc(1920px / -2);
+  margin-top: calc(1920px * 9 / 16 / -2);
 }
 
 .youtube .youtube__area::before {
@@ -609,4 +613,7 @@ header .badges .badge {
   padding-top: 56.25%;
 }
 
-.youtube .youtube__cover {}
+.youtube .youtube__cover {
+  background-image: url("../images/video_cover_pattern.png");
+  background-color: rgba(0, 0, 0, 0.3);
+}
