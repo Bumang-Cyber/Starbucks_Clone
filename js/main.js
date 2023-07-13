@@ -38,3 +38,50 @@ window.addEventListener(
   }, 300)
 );
 // lodash의 _.throttle(함수, 시간)
+
+const fadeEls = document.querySelectorAll(".visual .fade-in");
+fadeEls.forEach((fadeEl, index) => {
+  gsap.to(fadeEl, 1, {
+    delay: (index + 1) * 0.7,
+    opacity: 1,
+  });
+});
+
+// new Swiper('선택자', {옵션})
+new Swiper(".notice-line .swiper-container", {
+  direction: "vertical",
+  autoplay: true,
+  loop: true,
+});
+
+new Swiper(".promotion .swiper-container", {
+  slidesPerView: 3, //한 번에 보여줄 슬라이드 수
+  spaceBetween: 10, //슬라이드 사이 여백
+  centeredSlides: true, //가운데 포커스 슬라이드 구성
+  loop: true,
+  // autoplay: {
+  //   delay: 5000
+  // },
+  pagination: {
+    el: ".promotion .swiper-pagination", //페이지 번호 요소 선택자
+    clickable: true, //클릭가능한지
+  },
+  navigation: {
+    prevEl: ".promotion .swiper-prev",
+    nextEl: ".promotion .swiper-next",
+  }
+})
+
+const promotionEl = document.querySelector(".promotion")
+const promotionToggleBtn = document.querySelector(".toggle-promotion")
+let isHidePromotion = false;
+promotionToggleBtn.addEventListener('click', () => {
+  isHidePromotion = !isHidePromotion
+  if (isHidePromotion) {
+    //숨김 처리
+    promotionEl.classList.add("hide")
+  } else {
+    //보이기 처리
+    promotionEl.classList.remove("hide")
+  }
+})
