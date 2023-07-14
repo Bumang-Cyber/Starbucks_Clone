@@ -16,6 +16,7 @@ searchInputEl.addEventListener("blur", () => {
 });
 
 const badgeEl = document.querySelector("header .badges");
+const toTopEl = document.getElementById("to-top");
 
 window.addEventListener(
   "scroll",
@@ -30,6 +31,11 @@ window.addEventListener(
           opacity: 0,
           display: "none",
         });
+      gsap.to(toTopEl, {
+        display: "flex",
+        x: 0
+      })
+
     } else {
       // 배지 보이기
       gsap.to(
@@ -37,7 +43,12 @@ window.addEventListener(
         0.6, {
           opacity: 1,
           display: "block",
-        });
+        }
+      );
+      gsap.to(toTopEl, {
+        display: "none",
+        x: 500
+      })
     }
   }, 300)
 );
