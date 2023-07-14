@@ -24,21 +24,26 @@ window.addEventListener(
     if (window.scrollY > 500) {
       //배지 숨기기
       //gsap.to(요소, 지속시간, 옵션)
-      gsap.to(badgeEl, 0.6, {
-        opacity: 0,
-        display: "none",
-      });
+      gsap.to(
+        badgeEl,
+        0.6, {
+          opacity: 0,
+          display: "none",
+        });
     } else {
       // 배지 보이기
-      gsap.to(badgeEl, 0.6, {
-        opacity: 1,
-        display: "block",
-      });
+      gsap.to(
+        badgeEl,
+        0.6, {
+          opacity: 1,
+          display: "block",
+        });
     }
   }, 300)
 );
 // lodash의 _.throttle(함수, 시간)
 
+// VISUAL 첫 로딩 애니메이션
 const fadeEls = document.querySelectorAll(".visual .fade-in");
 fadeEls.forEach((fadeEl, index) => {
   gsap.to(fadeEl, 1, {
@@ -47,6 +52,7 @@ fadeEls.forEach((fadeEl, index) => {
   });
 });
 
+// VISUAL 공지사항 애니메이션
 // new Swiper('선택자', {옵션})
 new Swiper(".notice-line .swiper-container", {
   direction: "vertical",
@@ -54,6 +60,7 @@ new Swiper(".notice-line .swiper-container", {
   loop: true,
 });
 
+// PROMOTION 좌우 슬라이더
 new Swiper(".promotion .swiper-container", {
   slidesPerView: 3, //한 번에 보여줄 슬라이드 수
   spaceBetween: 10, //슬라이드 사이 여백
@@ -71,7 +78,18 @@ new Swiper(".promotion .swiper-container", {
     nextEl: ".promotion .swiper-next",
   }
 })
+new Swiper(".awards .swiper-container", {
+  autoplay: true,
+  loop: true,
+  spaceBetween: 30,
+  slidesPerView: 5,
+  navigation: {
+    prevEl: ".awards .swiper-prev",
+    nextEl: ".awards .swiper-next"
+  }
+})
 
+// 프로모션 토글
 const promotionEl = document.querySelector(".promotion")
 const promotionToggleBtn = document.querySelector(".toggle-promotion")
 let isHidePromotion = false;
@@ -110,3 +128,19 @@ function floatingObject(selector, delay, size) {
 floatingObject('.floating1', 1, 15)
 floatingObject('.floating2', 0.5, 15)
 floatingObject('.floating3', 1.5, 20)
+
+
+const spyEls = document.querySelectorAll("section.scroll-spy")
+spyEls.forEach((spyEl) => {
+  new ScrollMagic
+    .Scene({
+      triggerElement: spyEl,
+      triggerHook: .8 //뷰포트의 8팔 아래에서 훅을 걺. 거의 이벤트 리스너라고 보면 되나..
+
+    })
+    .setClassToggle(spyEl, 'show')
+    .addTo(new ScrollMagic.Controller());
+})
+
+const thisYear = document.querySelector(".this-year")
+thisYear.innerText = new Date().getFullYear()
