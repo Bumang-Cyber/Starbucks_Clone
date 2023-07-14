@@ -31,10 +31,12 @@ window.addEventListener(
           opacity: 0,
           display: "none",
         });
-      gsap.to(toTopEl, {
-        display: "flex",
-        x: 0
-      })
+      gsap.to(
+        toTopEl,
+        0.2, {
+          display: "flex",
+          x: 0
+        })
 
     } else {
       // 배지 보이기
@@ -45,14 +47,22 @@ window.addEventListener(
           display: "block",
         }
       );
-      gsap.to(toTopEl, {
-        display: "none",
-        x: 500
-      })
+      gsap.to(
+        toTopEl,
+        0.2, {
+          display: "none",
+          x: 100
+        })
     }
   }, 300)
 );
 // lodash의 _.throttle(함수, 시간)
+
+toTopEl.addEventListener("click", () => {
+  gsap.to(window, 0.7, {
+    scrollTo: 0
+  })
+})
 
 // VISUAL 첫 로딩 애니메이션
 const fadeEls = document.querySelectorAll(".visual .fade-in");
