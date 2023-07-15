@@ -1,20 +1,3 @@
-const searchEl = document.querySelector(".search");
-const searchInputEl = searchEl.querySelector("input"); //각각의 노드에서 또 querySelector를 쓸 수 있다.
-
-searchEl.addEventListener("click", () => {
-  searchInputEl.focus();
-});
-
-searchInputEl.addEventListener("focus", () => {
-  searchEl.classList.add("focused");
-  searchInputEl.setAttribute("placeholder", "통합검색");
-});
-
-searchInputEl.addEventListener("blur", () => {
-  searchEl.classList.remove("focused");
-  searchInputEl.setAttribute("placeholder", "");
-});
-
 const badgeEl = document.querySelector("header .badges");
 const toTopEl = document.getElementById("to-top");
 
@@ -162,6 +145,3 @@ spyEls.forEach((spyEl) => {
     .setClassToggle(spyEl, 'show')
     .addTo(new ScrollMagic.Controller());
 })
-
-const thisYear = document.querySelector(".this-year")
-thisYear.innerText = new Date().getFullYear()
